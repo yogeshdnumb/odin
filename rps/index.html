@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+            src="https://kit.fontawesome.com/18928e2539.js"
+            crossorigin="anonymous"
+        ></script>
+        <link rel="icon" href="https://fav.farm/💩" />
+        <title>Rock Paper Scissors</title>
+        <link rel="stylesheet" href="./style.css" />
+        <script src="./rps.js" defer></script>
+    </head>
+    <body>
+        <div id="container">
+            <p id="commentry">0:0</p>
+            <div id="game-container">
+                <div id="player-container">
+                    <span
+                        data-choice="0"
+                        class="player-symbol fa-solid fa-hand-back-fist"
+                    ></span>
+                    <span
+                        data-choice="1"
+                        class="player-symbol fa-solid fa-hand"
+                    ></span>
+                    <span
+                        data-choice="2"
+                        class="player-symbol fa-solid fa-hand-scissors"
+                    ></span>
+                </div>
+                <div id="comp-container">
+                    <span class="comp-symbol fa-solid fa-robot"></span>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

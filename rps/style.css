@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Comic CAT";
+    src: url("./fonts/Comic_CAT.otf") format("opentype"),
+        url("./fonts/Comic_CAT.ttf") format("truetype");
+    font-weight: normal;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e1e2e;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+}
+#game-container {
+    display: flex;
+    /* flex: 1; */
+    width: 800px;
+    /* height: 100px; */
+    justify-content: space-between;
+    align-items: center;
+    margin: auto;
+    /* flex-direction: column; */
+
+    /* background-color: #fefae0; */
+}
+#commentry {
+    font-size: 100px;
+    text-align: center;
+    color: #e8e6e3;
+    font-family: "Comic CAT";
+}
+
+#player-container {
+    display: flex;
+    /* width: 100%; */
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+    min-width: 0px;
+    /* flex: 1; */
+}
+.player-symbol {
+    font-size: 128px;
+    cursor: pointer;
+    min-width: 0px;
+    color: #ad7fd9;
+    --fa-animation-iteration-count: 1;
+    /* --fa-animation-duration: 5s; */
+    /* --fa-animation-delay: 0s; */
+    --fade-beat-scale: 5;
+    /* width: 100%; */
+}
+.player-symbol:nth-child(1) {
+    order: 0;
+}
+.player-symbol:nth-child(2) {
+    order: 1;
+}
+.player-symbol:nth-child(3) {
+    order: 2;
+}
+#comp-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.comp-symbol {
+    font-size: 200px;
+    min-width: 0px;
+    color: #9d4edd;
+    --fa-animation-iteration-count: 1;
+}
