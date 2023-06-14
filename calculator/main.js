@@ -7,8 +7,6 @@ click_sound = new Audio("./audio/keypress.mp3");
 enter_sound = new Audio("./audio/enter.mp3");
 
 document.addEventListener("keydown", (e) => {
-    console.log(e.key);
-
     switch (e.key) {
         case "Enter":
             main("=");
@@ -32,7 +30,6 @@ buttons.forEach((element) => {
 });
 
 function main(value) {
-    console.log(value);
     if (value === "=") {
         enter_sound.currentTime = 0;
         enter_sound.play();
@@ -59,7 +56,6 @@ function main(value) {
         }
     }
     if (operators.includes(value)) {
-        console.log(screen.textContent.charAt(screen.textContent.length - 1));
         if (
             operators.includes(
                 screen.textContent.charAt(screen.textContent.length - 1)
@@ -87,31 +83,24 @@ function main(value) {
 
 function operate(matches) {
     if (matches[3] !== undefined) {
-        console.log("not single");
         var x = Number(matches[1]);
         var y = Number(matches[3]);
         var op = matches[2];
-        console.log(matches);
 
         switch (op) {
             case "+":
-                console.log(+x + +y);
                 screen.textContent = +x + +y;
                 break;
             case "-":
-                console.log(x - y);
                 screen.textContent = x - y;
                 break;
             case "*":
-                console.log(x * y);
                 screen.textContent = x * y;
                 break;
             case "/":
-                console.log(x / y);
                 screen.textContent = x / y;
                 break;
             case "%":
-                console.log(x % y);
                 screen.textContent = x % y;
                 break;
         }

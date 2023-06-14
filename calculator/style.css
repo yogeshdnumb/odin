@@ -56,7 +56,6 @@ body {
     background-color: var(--secondary-clr);
     box-shadow: 2px 2px 10px var(--shadow-clr);
     box-shadow: inset 1px 1px 10px var(--shadow-clr);
-    /* flex-wrap: wrap; */
 }
 
 #screen>span {
@@ -102,10 +101,4 @@ body {
 
 #calculator button:hover {
     background-color: var(--ctp-latte-surface0);
-    /* transition: 0.7s; */
 }
-
-/* #screen span {
-    display: flex;
-    flex: 1
-} */
