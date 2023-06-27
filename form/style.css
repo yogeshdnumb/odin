@@ -1,0 +1,155 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    /* font: inherit; */
+    /* appearance: none; */
+    /* outline: solid 1px aquamarine; */
+}
+
+@font-face {
+    font-family: "Sinister Sunday";
+    src: url(./fonts/sinister_sunday.otf) format("opentype");
+    font-weight: normal;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+form {
+    background-image: url(./assets/stairway-to-hell.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 64px;
+}
+
+.form-el {
+    display: flex;
+    flex-direction: column;
+
+    /* outline: solid 1px aquamarine; */
+    /* background-color: gray; */
+}
+
+label {
+    cursor: pointer;
+    display: inline-block;
+    font-family: "Bubblegum Sans", cursive;
+    color: #f84202;
+    /* background-color: red; */
+    /* background: linear-gradient(to right red, orange); */
+    background-clip: text;
+    font-size: 1.3rem;
+
+    /* visibility: hidden; */
+}
+
+label strong {
+    /* font-size: 1rem; */
+    font-family: monospace;
+    color: orange;
+    font-weight: 800;
+    transform: scale(2);
+}
+
+input {
+    background: none;
+    border: none;
+    outline: none;
+    border-bottom: solid 2px #f84202;
+    color: #fcb31c;
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+input:focus {
+    /* border-bottom: solid 2px #fcb31c; */
+    padding-left: 4px;
+    border-width: 1px;
+    border-style: solid;
+    border-image: linear-gradient(to right, red, orange) 1;
+    border-width: 0px 0px 4px 0px;
+}
+
+.password-el {
+    /* outline: solid 1px yellow; */
+    position: relative;
+    /* padding: 0; */
+}
+
+.password-el ul {
+    list-style-type: none;
+}
+
+
+.password-el li {
+    color: #f84202;
+    /* color: red; */
+    font-weight: 800;
+    font-family: "Bubblegum Sans";
+}
+
+.password-el li:nth-child(1) {
+    font-style: italic;
+    color: #fcb31c;
+}
+
+.validation i {
+    color: #f84202;
+}
+
+
+button {
+    cursor: pointer;
+    /* width: 80px;
+    height: 30px; */
+    font-family: "Bubblegum Sans", cursive;
+    font-size: 1.5rem;
+    border: none;
+    background-color: #f84202;
+    border-radius: 12px;
+    padding: 3px;
+    color: hsl(0, 100%, 20%);
+}
+
+button:hover {
+    transform: scale(1.2)21;
+}
+
+i {
+    visibility: hidden;
+}
+
+i.visible {
+    visibility: visible;
+    color: #fcb31c;
+}
+
+
+#pass-match {
+    visibility: visible;
+    color: #fcb31c;
+}
+
+#pass-match.invisible {
+    visibility: hidden;
+}

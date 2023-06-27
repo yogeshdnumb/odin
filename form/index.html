@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&display=swap"
+            rel="stylesheet"
+        />
+        <!-- <link rel="stylesheet" href="./normalize.css"> -->
+        <script
+            src="https://kit.fontawesome.com/18928e2539.js"
+            crossorigin="anonymous"
+        ></script>
+        <script src="./main.js" defer></script>
+        <link rel="stylesheet" href="./style.css" />
+        <title>To Hell</title>
+    </head>
+
+    <body>
+        <!-- <header>Welcome to Hell!</header> -->
+        <div class="container">
+            <div class="picture"></div>
+            <form>
+                <div class="form-row">
+                    <div class="form-el">
+                        <label for="first-name"
+                            >First Name
+                            <strong aria-label="required">*</strong></label
+                        ><input
+                            placeholder="John"
+                            type="text"
+                            name="first_name"
+                            id="first-name"
+                            title="required"
+                            required
+                        />
+                    </div>
+                    <div class="form-el">
+                        <label for="last-name">Last Name </label
+                        ><input
+                            placeholder="Doe"
+                            type="text"
+                            name="last_name"
+                            id="last-name"
+                        />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-el">
+                        <label for="email"
+                            >Email
+                            <strong aria-label="required">*</strong></label
+                        ><input
+                            placeholder="someone@email.com"
+                            type="email"
+                            name="email"
+                            id="email"
+                            title="required"
+                            required
+                        />
+                    </div>
+                    <div class="form-el">
+                        <label for="phone-number">Phone Number</label
+                        ><input
+                            placeholder="+918667221703"
+                            type="tel"
+                            name="phone_number"
+                            id="phone-number"
+                        />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-el password-el">
+                        <label for="password"
+                            >Password
+                            <strong aria-label="required">*</strong></label
+                        ><input
+                            placeholder="super strong password"
+                            type="password"
+                            name="password"
+                            id="password"
+                            title="required"
+                            required
+                        />
+                        <ul>
+                            <li>Please Include</li>
+                            <li class="validation" id="chars">
+                                6 characters <i class="fa-solid fa-check"></i>
+                            </li>
+                            <li class="validation" id="upper">
+                                uppercase
+                                <i class="fa-solid fa-check"></i>
+                            </li>
+                            <li class="validation" id="lower">
+                                lowercase <i class="fa-solid fa-check"></i>
+                            </li>
+                            <li class="validation" id="nums">
+                                numbers <i class="fa-solid fa-check"></i>
+                            </li>
+                            <li class="validation" id="spcl">
+                                special characters
+                                <i class="fa-solid fa-check"></i>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="form-el">
+                        <label for="re-pass"
+                            >Confirm Password
+                            <strong aria-label="required">*</strong></label
+                        ><input
+                            placeholder="repeat password"
+                            type="password"
+                            name="re_pass"
+                            id="re-pass"
+                            title="required"
+                            required
+                        />
+                        <p id="pass-match">Password does not match</p>
+                        <!-- <p id="not-match">Password does not match</p> -->
+                    </div>
+                </div>
+                <button>Go to Hell!</button>
+            </form>
+        </div>
+    </body>
+</html>

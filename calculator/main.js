@@ -8,6 +8,9 @@ enter_sound = new Audio("./audio/enter.mp3");
 
 document.addEventListener("keydown", (e) => {
     switch (e.key) {
+        case "/":
+            e.preventDefault();
+            break;
         case "Enter":
             main("=");
             break;
