@@ -2,15 +2,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    /* font: inherit; */
-    /* appearance: none; */
-    /* outline: solid 1px aquamarine; */
-}
-
-@font-face {
-    font-family: "Sinister Sunday";
-    src: url(./fonts/sinister_sunday.otf) format("opentype");
-    font-weight: normal;
 }
 
 .container {
@@ -19,7 +10,7 @@
 }
 
 form {
-    background-image: url(./assets/stairway-to-hell.jpg);
+    background-image: url(./assets/stairway_to_hell.jpeg);
     background-size: cover;
     background-position: center;
 }
@@ -45,9 +36,6 @@ form {
 .form-el {
     display: flex;
     flex-direction: column;
-
-    /* outline: solid 1px aquamarine; */
-    /* background-color: gray; */
 }
 
 label {
@@ -55,16 +43,11 @@ label {
     display: inline-block;
     font-family: "Bubblegum Sans", cursive;
     color: #f84202;
-    /* background-color: red; */
-    /* background: linear-gradient(to right red, orange); */
     background-clip: text;
     font-size: 1.3rem;
-
-    /* visibility: hidden; */
 }
 
 label strong {
-    /* font-size: 1rem; */
     font-family: monospace;
     color: orange;
     font-weight: 800;
@@ -82,7 +65,6 @@ input {
 }
 
 input:focus {
-    /* border-bottom: solid 2px #fcb31c; */
     padding-left: 4px;
     border-width: 1px;
     border-style: solid;
@@ -91,9 +73,7 @@ input:focus {
 }
 
 .password-el {
-    /* outline: solid 1px yellow; */
     position: relative;
-    /* padding: 0; */
 }
 
 .password-el ul {
@@ -103,7 +83,6 @@ input:focus {
 
 .password-el li {
     color: #f84202;
-    /* color: red; */
     font-weight: 800;
     font-family: "Bubblegum Sans";
 }
@@ -117,11 +96,8 @@ input:focus {
     color: #f84202;
 }
 
-
 button {
     cursor: pointer;
-    /* width: 80px;
-    height: 30px; */
     font-family: "Bubblegum Sans", cursive;
     font-size: 1.5rem;
     border: none;
@@ -144,12 +120,14 @@ i.visible {
     color: #fcb31c;
 }
 
-
 #pass-match {
-    visibility: visible;
-    color: #fcb31c;
+    visibility: hidden;
 }
 
-#pass-match.invisible {
-    visibility: hidden;
+#pass-match.visible {
+    visibility: visible;
+    color: #f84202;
+    font-family: "Bubblegum Sans", cursive;
+    font-weight: 800;
+    font-size: 1.1rem;
 }

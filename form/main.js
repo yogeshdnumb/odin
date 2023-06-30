@@ -2,37 +2,30 @@ const password_input = document.querySelector("#password");
 const re_pass = document.querySelector("#re-pass");
 const pass_match = document.querySelector("#pass-match");
 const validations = document.querySelectorAll(".validation");
-const chars = document.querySelector("#chars");
-const upper = document.querySelector("#upper");
-const lower = document.querySelector("#lower");
-const nums = document.querySelector("#nums");
-const spcl = document.querySelector("#spcl");
+const submit_btn = document.querySelector("button");
 
 const ORANGE = "#fcb31c";
 const RED = "#f84202";
 
-console.log(password_input);
-
 password_input.addEventListener("input", validate);
 re_pass.addEventListener("input", same_check);
+submit_btn.addEventListener("click", submit);
 
-function validate(e) {
-    check(chars, /.[6,]/);
-    check(upper, /[A-Z]/);
-    check(lower, /[a-z]/);
-    check(nums, /\d/);
-    check(spcl, /[^\w\s\d]/);
+function validate() {
+    // main function for validating password
+    check("chars", /.{6,}/);
+    check("upper", /[A-Z]/);
+    check("lower", /[a-z]/);
+    check("nums", /\d/);
+    check("spcl", /[^\w\s\d]/);
 }
 
-function check(element, pattern) {
-    console.log(password_input.value.length);
-    if (
-        password_input.value.match(pattern, 0) ||
-        password_input.value.length >= 6
-    ) {
+function check(field, pattern) {
+    // checks is the password satifies all the requirements
+    element = document.querySelector("#" + field);
+    if (password_input.value.match(pattern, 0)) {
         element.style.color = ORANGE;
         element.firstElementChild.classList.add("visible");
-        console.log(element.firstElementChild.classList);
     } else {
         element.style.color = RED;
         element.firstElementChild.classList.remove("visible");
@@ -40,9 +33,41 @@ function check(element, pattern) {
 }
 
 function same_check() {
-    if (password_input.value === re_pass.value) {
-        re_pass.lastElementChild.classList.add("invisible");
+    // checks if both the passwords are same
+    if (password_input.value == re_pass.value) {
+        pass_match.classList.remove("visible");
+        return true;
     } else {
-        re_pass.lastElementChild.classList.remove("invisible");
+        pass_match.classList.add("visible");
     }
+}
+
+function submit() {
+    // function for submiting form when button is pressed
+
+    // checks if all the required fields are filled
+    var is_ok = true;
+    [...document.querySelectorAll("input")].forEach((el) => {
+        if (!el.checkValidity()) {
+            el.focus();
+            is_ok = false;
+        }
+    });
+    if (!is_ok) return;
+
+    // checks if the password satifies the requirements
+    if (
+        ![...validations].every((el) =>
+            el.firstElementChild.classList.contains("visible")
+        )
+    ) {
+        password_input.focus();
+        return;
+    }
+
+    if (!same_check()) {
+        re_pass.focus();
+        return;
+    }
+    document.querySelector("form").submit();
 }
