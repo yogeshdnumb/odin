@@ -1,0 +1,263 @@
+* {
+    box-sizing: border-box;
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    /* outline: 2px solid salmon; */
+}
+
+:root {
+    --text-primary: #211e25;
+    --text2: #242028;
+    --background: hsl(272, 42%, 94%);
+    --primary: hsl(270, 44%, 55%);
+    --secondary: hsl(270, 44%, 84%);
+    --accent: hsl(270, 44%, 35%);
+    --logo-font: "Passion One";
+}
+
+.container {
+    height: 100vh;
+    padding: 16px;
+    background-color: var(--background);
+    display: grid;
+    gap: 1rem;
+    grid-template-rows: minmax(90px, 8%) 1fr minmax(20px, 4%);
+    /* minmax(72px, 5%); */
+    grid-template-columns: minmax(250px, 15%) 1fr minmax(200px, 10%);
+    grid-template-columns: minmax(100px, auto) 1fr minmax(200px, 10%);
+    /* minmax(200px, 10%); */
+}
+nav {
+    width: 100px;
+    transition: width 200ms ease;
+    box-shadow: var(--accent) 1px 1px 10px;
+}
+nav:hover {
+    width: 250px;
+}
+nav ul {
+    list-style-type: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 64px;
+}
+.nav-item {
+    color: var(--accent);
+    filter: grayscale(100%) opacity(0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    cursor: pointer;
+    /* height: 64px; */
+}
+.nav-item i {
+    font-size: 48px;
+}
+.nav-item span {
+    display: none;
+}
+nav:hover .nav-item span {
+    display: block;
+    font-family: "rubik";
+    font-weight: 800;
+}
+.nav-item:hover {
+    /* background: red; */
+    /* text-decoration: underline solid var(--accent) 5px; */
+    /* border-bottom: solid 1px var(--accent); */
+    filter: grayscale(0%) opacity(1);
+}
+
+#themes {
+    margin-top: auto;
+}
+
+header,
+footer {
+    background-color: var(--primary);
+    border-radius: 6px;
+}
+
+header {
+    grid-column: 1/-1;
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    padding: 0 2rem;
+}
+
+header #logo {
+    font-family: var(--logo-font);
+    font-size: 2rem;
+    color: var(--text-primary);
+    color: #242028;
+}
+header #links {
+    padding-left: 24px;
+    /* font-family: "rubik"; */
+    /* font-family: "Passion One"; */
+    font-family: "Secular One";
+
+    list-style-type: none;
+    gap: 12px;
+    display: flex;
+}
+header a {
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--text-primary);
+}
+header a:hover {
+    text-decoration: underline solid var(--accent) 5px;
+    /* transition: 200ms ease; */
+    /* color: var(--accent); */
+    /* font-weight: bold; */
+    /* box-shadow: rebeccapurple 10px 10px; */
+    /* background-color: red; */
+}
+header #search {
+    grid-template-columns: auto auto;
+    display: flex;
+    align-items: center;
+    justify-self: end;
+}
+
+header input {
+    width: clamp(200px, 20vw, 350px);
+    height: 2rem;
+    border-radius: 0 12px 12px 0;
+    outline: 0;
+    border: 0;
+    font-size: 1.2rem;
+    background-color: #ddd6fe;
+    background-color: var(--secondary);
+    color: var(--text-primary);
+    /* color: var(--accent); */
+    font-family: "rubik";
+}
+
+header button {
+    border: 0;
+    height: 2rem;
+    border-radius: 12px 0 0 12px;
+    width: 2.5rem;
+    background-color: var(--secondary);
+    color: var(--accent);
+    font-size: 1.2rem;
+}
+
+.bars {
+    background-color: var(--secondary);
+    border-radius: 6px;
+    box-shadow: var(--accent) 1px 1px 10px;
+}
+
+#statsbar {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    grid-column: -2/-1;
+}
+
+#avatar {
+    width: 150px;
+    height: 150px;
+    background-image: url("https://avatars.githubusercontent.com/u/84368844?v=4");
+    background-size: contain;
+    background-position: center;
+    border-radius: 50%;
+}
+#statsbar #username {
+    font-family: "Passion One";
+    color: var(--accent);
+    font-size: 1.5rem;
+}
+#statsbar li {
+    font-family: "rubik";
+    font-family: "Secular One";
+    color: var(--accent);
+    list-style-type: none;
+    font-weight: 800;
+}
+
+/* #sidebar #links  */
+#content {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(auto-fill, 225px);
+    overflow: auto;
+}
+
+.card {
+    height: 275px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    /* cursor: pointer; */
+    /* outline: solid 1px red; */
+    /* border-radius: 20px; */
+}
+
+.card .title {
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary);
+    font-size: 32px;
+    min-width: 12px;
+    font-family: var(--logo-font);
+    color: var(--text1);
+    color: #211e25;
+    border-radius: 6px 6px 0 0;
+    overflow: auto;
+    /* font-family: "Secular One"; */
+}
+
+.card .description {
+    font-size: 1rem;
+    padding: 12px;
+    overflow: auto;
+    text-align: center;
+    flex: 1;
+    background-color: var(--secondary);
+    color: var(--accent);
+    font-family: "rubik";
+}
+
+.card .card-footer {
+    height: 12%;
+    font-size: 1.2rem;
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+    background-color: #c4b5fd;
+    background-color: var(--secondary);
+    color: var(--accent);
+    border-radius: 0 0 6px 6px;
+    padding-bottom: 32px;
+}
+
+footer {
+    grid-column: 1/-1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "rubik";
+}
+footer a {
+    text-decoration: none;
+    color: inherit;
+}
+footer a:hover {
+    text-decoration: underline solid var(--accent) 5px;
+}
