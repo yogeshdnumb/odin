@@ -8,8 +8,6 @@ search.addEventListener("keypress", (event) => {
     }
 });
 
-document.addEventListener("load", main("theodinproject"));
-
 function main(username) {
     stars = 0;
     fetch(`https://api.github.com/users/${username}/repos`)
@@ -77,3 +75,5 @@ function make_stats(data, username) {
 document.querySelector("#themes").addEventListener("click", () => {
     document.querySelector(".container").classList.toggle("dark");
 });
+
+main("theodinproject");
