@@ -7,16 +7,24 @@
 }
 
 :root {
-    --text-primary: #211e25;
-    --text2: #242028;
+    --logo-font: "Passion One";
+
+    /* --avatar-img: url("https://avatars.githubusercontent.com/u/84368844?v=4"); */
+}
+.container.dark {
+    --text-primary: #f0e9f6;
+    --background: #050307;
+    --primary: #8c5abf;
+    --secondary: #1e122b;
+    --text-secondary: #593281;
+}
+.container {
+    --text-primary: #593281;
     --background: hsl(272, 42%, 94%);
     --primary: hsl(270, 44%, 55%);
     --secondary: hsl(270, 44%, 84%);
-    --accent: hsl(270, 44%, 35%);
-    --logo-font: "Passion One";
-}
+    --text-header: #242028;
 
-.container {
     height: 100vh;
     padding: 16px;
     background-color: var(--background);
@@ -27,51 +35,6 @@
     grid-template-columns: minmax(250px, 15%) 1fr minmax(200px, 10%);
     grid-template-columns: minmax(100px, auto) 1fr minmax(200px, 10%);
     /* minmax(200px, 10%); */
-}
-nav {
-    width: 100px;
-    transition: width 200ms ease;
-    box-shadow: var(--accent) 1px 1px 10px;
-}
-nav:hover {
-    width: 250px;
-}
-nav ul {
-    list-style-type: none;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 2rem 0;
-    justify-content: center;
-    /* align-items: center; */
-    gap: 64px;
-}
-.nav-item {
-    color: var(--accent);
-    filter: grayscale(100%) opacity(0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    cursor: pointer;
-    /* height: 64px; */
-}
-.nav-item i {
-    font-size: 48px;
-}
-.nav-item span {
-    display: none;
-}
-nav:hover .nav-item span {
-    display: block;
-    font-family: "rubik";
-    font-weight: 800;
-}
-.nav-item:hover {
-    /* background: red; */
-    /* text-decoration: underline solid var(--accent) 5px; */
-    /* border-bottom: solid 1px var(--accent); */
-    filter: grayscale(0%) opacity(1);
 }
 
 #themes {
@@ -95,8 +58,8 @@ header {
 header #logo {
     font-family: var(--logo-font);
     font-size: 2rem;
-    color: var(--text-primary);
-    color: #242028;
+    color: var(--text-header);
+    font-weight: 800;
 }
 header #links {
     padding-left: 24px;
@@ -111,10 +74,10 @@ header #links {
 header a {
     text-decoration: none;
     font-weight: bold;
-    color: var(--text-primary);
+    color: var(--text-header);
 }
 header a:hover {
-    text-decoration: underline solid var(--accent) 5px;
+    text-decoration: underline solid var(--text-primary) 5px;
     /* transition: 200ms ease; */
     /* color: var(--accent); */
     /* font-weight: bold; */
@@ -148,44 +111,116 @@ header button {
     border-radius: 12px 0 0 12px;
     width: 2.5rem;
     background-color: var(--secondary);
-    color: var(--accent);
+    color: var(--text-primary);
     font-size: 1.2rem;
+}
+
+nav {
+    width: 100px;
+    transition: width 200ms ease;
+    box-shadow: var(--text-primary) 1px 1px 10px;
+}
+nav:hover {
+    width: 250px;
+}
+nav ul {
+    list-style-type: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+    justify-content: center;
+    /* align-items: center; */
+    gap: 64px;
+}
+.nav-item {
+    color: var(--text-primary);
+    filter: grayscale(100%) opacity(0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    cursor: pointer;
+    /* height: 64px; */
+}
+.nav-item i,
+.nav-item svg {
+    width: 48px;
+    font-size: 48px;
+}
+.nav-item span {
+    display: none;
+}
+nav:hover .nav-item span {
+    display: block;
+    font-family: "rubik";
+    font-weight: 800;
+}
+
+#sun,
+#moon {
+    fill: var(--text-primary);
+}
+.container #moon {
+    display: none;
+}
+
+.container.dark #sun {
+    display: none;
+}
+.container.dark #moon {
+    display: block;
+}
+
+.nav-item:hover {
+    /* background: red; */
+    /* text-decoration: underline solid var(--accent) 5px; */
+    /* border-bottom: solid 1px var(--accent); */
+    filter: grayscale(0%) opacity(1);
 }
 
 .bars {
     background-color: var(--secondary);
     border-radius: 6px;
-    box-shadow: var(--accent) 1px 1px 10px;
+    box-shadow: var(--text-primary) 1px 1px 10px;
 }
 
 #statsbar {
-    padding: 16px;
+    padding: 2rem 0;
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
     grid-column: -2/-1;
+    gap: 16px;
 }
 
 #avatar {
     width: 150px;
     height: 150px;
-    background-image: url("https://avatars.githubusercontent.com/u/84368844?v=4");
+    /* background-image: url("https://avatars.githubusercontent.com/u/84368844?v=4"); */
+    /* background-image: url(./84368844.jpg); */
+    background-image: var(--avatar-img);
     background-size: contain;
     background-position: center;
     border-radius: 50%;
 }
 #statsbar #username {
     font-family: "Passion One";
-    color: var(--accent);
+    color: var(--text-primary);
     font-size: 1.5rem;
+    font-weight: 400;
 }
 #statsbar li {
     font-family: "rubik";
     font-family: "Secular One";
-    color: var(--accent);
+    color: var(--primary);
     list-style-type: none;
     font-weight: 800;
+    font-size: 1.1rem;
+}
+#stats span {
+    color: var(--text-primary);
 }
 
 /* #sidebar #links  */
@@ -223,30 +258,41 @@ header button {
 }
 
 .card .description {
+    display: flex;
     font-size: 1rem;
     padding: 12px;
     overflow: auto;
     text-align: center;
     flex: 1;
     background-color: var(--secondary);
-    color: var(--accent);
+    color: var(--text-primary);
     font-family: "rubik";
+    align-items: center;
+    justify-content: center;
 }
 
+.card .description svg {
+    font-size: 64px;
+    color: var(--text-primary);
+}
 .card .card-footer {
-    height: 12%;
+    padding: 16px;
+    /* height: 12%; */
     font-size: 1.2rem;
     display: flex;
     gap: 24px;
     justify-content: center;
-    align-items: center;
-    background-color: #c4b5fd;
+    align-items: baseline;
     background-color: var(--secondary);
-    color: var(--accent);
+    color: var(--text-primary);
     border-radius: 0 0 6px 6px;
-    padding-bottom: 32px;
+    padding-bottom: 16px;
 }
-
+.card-footer span {
+    font-size: 1rem;
+    margin-left: 3px;
+    /* margin-right: 100%; */
+}
 footer {
     grid-column: 1/-1;
     display: flex;
@@ -259,5 +305,5 @@ footer a {
     color: inherit;
 }
 footer a:hover {
-    text-decoration: underline solid var(--accent) 5px;
+    text-decoration: underline solid var(--text-primary) 5px;
 }
