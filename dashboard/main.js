@@ -1,11 +1,14 @@
 const content = document.querySelector("#content");
 const statsbar = document.querySelector("#statsbar");
 const search = document.querySelector("header input");
+var stars = 0;
 search.addEventListener("keypress", (event) => {
     if (event.key == "Enter") {
         main(event.target.value);
     }
 });
+
+document.addEventListener("load", main("theodinproject"));
 
 function main(username) {
     stars = 0;
