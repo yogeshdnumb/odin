@@ -1,7 +1,8 @@
 const main = document.querySelector("#main");
-const submit = document.querySelector("#submit");
 const add_btn = document.querySelector("#add");
 const dialog = document.querySelector("dialog");
+const submit = document.querySelector("#submit");
+const close_btn = document.querySelector(".fa-xmark");
 
 const form = document.querySelector("form");
 const title = form.querySelector("#title");
@@ -24,8 +25,6 @@ Book.prototype.count = 0;
 
 // inp = prompt("Enter Book details");
 
-// console.log(new Book(...inp.split(" ")));
-
 function make_book(book) {
     const book_container = document.createElement("div");
     const id = document.createElement("span");
@@ -43,12 +42,10 @@ function make_book(book) {
     status.add(opt2);
 
     status.value = book.status;
-    console.log(status.value, book.status, "coool");
 
     const cover = document.createElement("div");
     cover.classList.add("cover");
     if (book.cover != "") cover.style.backgroundImage = `url("${book.cover}")`;
-    console.log(book.cover);
 
     book_container.className = "book-container";
     id.className = "id";
@@ -77,12 +74,10 @@ function make_book(book) {
     tools.querySelector(".fa-trash").addEventListener("click", (e) => {
         // main.removeChild(current_container);
         book_container.classList.add("deleted");
-        console.log(book_container);
     });
 
     book_container.addEventListener("transitionend", () => {
         main.removeChild(book_container);
-        console.log("end");
     });
 
     book_container.appendChild(tools);
@@ -94,7 +89,6 @@ function make_book(book) {
 }
 submit.addEventListener("click", () => {
     if (form.querySelector("input#title").value != "") {
-        // console.log("cool");
         make_book(
             new Book(
                 title.value,
@@ -111,6 +105,10 @@ submit.addEventListener("click", () => {
 
 add_btn.addEventListener("click", () => {
     dialog.showModal();
+});
+
+close_btn.addEventListener("click", () => {
+    dialog.close();
 });
 
 make_book(

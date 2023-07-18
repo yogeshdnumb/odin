@@ -28,66 +28,24 @@ body {
     position: absolute;
     border-radius: 5px;
     cursor: pointer;
-    background-color: #eeefe1;
-    border: 0;
-    border: 1px solid transparent;
-    transition: 1s;
+    /* background-color: #eeefe1; */
     cursor: pointer;
     overflow: hidden;
     left: 50%;
     margin-top: 1rem;
-    /* inset: 0; */
-    /* margin: auto; */
-
-    background-color: #eeefe1;
-    /* box-shadow: #eeefe1 2px 2px 10px; */
-    /* border-color: #ce5c0c; */
-}
-#add::after {
-    position: absolute;
-    content: "";
-    display: block;
-    background-color: rgba(255, 255, 255, 0.5);
-    /* background-color: orange; */
-    width: 30px;
-    height: 100%;
-    top: 0;
-    filter: blur(5px);
-    transform: translateX(-100px) skewX(-15deg);
-}
-#add::before {
-    position: absolute;
-    content: "";
-    top: 0;
-    background-color: rgba(255, 255, 255, 0.2);
-    width: 60px;
-    height: 100%;
-    /* background-color: red; */
-    transform: translateX(-100px) skew(-15deg);
-    filter: blur(60px);
-}
-
-#add:hover {
-    transform: scale(1.1);
-    transition: 0.3s;
-}
-#add:hover::after,
-#add:hover::before {
-    transition: 1s;
-    transform: translateX(300px) skewX(-15deg);
-    /* right: 0; */
+    font-weight: bold;
 }
 
 header,
 footer {
     background-color: var(--clr-primary);
+    font-family: "Carter One", cursive;
     /* color: #2f4858; */
 }
 header {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: reilova;
     font-size: 1.5rem;
 
     height: 50px;
@@ -96,7 +54,6 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-family: reilova;
     font-size: 0.8rem;
     height: 30px;
 }
@@ -219,6 +176,15 @@ footer {
     padding: 1rem;
 }
 
+.dialog .fa-xmark {
+    position: absolute;
+    bottom: 1.1rem;
+    right: 145px;
+}
+.dialog .fa-xmark:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
 input:invalid {
     outline: solid red 1px;
 }
