@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+            src="https://kit.fontawesome.com/18928e2539.js"
+            crossorigin="anonymous"
+        ></script>
+        <link rel="stylesheet" href="./style.css" />
+        <script src="main.js" defer></script>
+        <title>My Book List</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Alegreya+Sans&family=Arvo:ital@1&family=Open+Sans&family=Roboto&family=Source+Code+Pro&display=swap"
+            rel="stylesheet"
+        />
+        <!-- <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+        /> -->
+    </head>
+
+    <body>
+        <header>My Book List</header>
+        <div id="main">
+            <button id="add"><i class="fa-solid fa-plus"></i></button>
+        </div>
+        <dialog class="dialog">
+            <form>
+                <ul>
+                    <li>
+                        <label for="title" aria-label="required">Title*: </label
+                        ><input required type="text" id="title" name="title" />
+                    </li>
+                    <li>
+                        <label for="author">Author: </label
+                        ><input type="text" id="author" name="author" />
+                    </li>
+
+                    <li>
+                        <label for="pages">Pages: </label
+                        ><input type="text" name="pages" id="pages" />
+                    </li>
+                    <li>
+                        <label for="status">Status: </label>
+                        <!-- <input type="text" id="status" name="status" /> -->
+                        <select name="status" id="status">
+                            <option value="Read">Read</option>
+                            <option selected value="Unfinished">
+                                Unfinished
+                            </option>
+                        </select>
+                    </li>
+                    <li>
+                        <label for="cover">Cover: </label
+                        ><input
+                            type="text"
+                            placeholder="url"
+                            name="cover"
+                            id="cover"
+                        />
+                        <label for="upload"
+                            ><i class="fa-solid fa-upload"></i
+                        ></label>
+                        <input type="file" name="cover" id="upload" />
+                    </li>
+                </ul>
+                <button id="submit" type="button">Submit</button>
+            </form>
+        </dialog>
+        <footer>Made with &hearts; by yogeshd_numb</footer>
+    </body>
+</html>
