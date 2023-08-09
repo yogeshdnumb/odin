@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+:root {
+    --bg: #eeeadf;
+    --board-bg: #fff;
+}
+
+@font-face {
+    font-family: "cookiemonster";
+    src: url("./fonts/CookieMonster/cookiemonster-webfont.woff2")
+            format("woff2"),
+        url("./fonts/CookieMonster/cookiemonster-webfont.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    height: 100vh;
+    background-color: var(--bg);
+    padding-block: 1rem;
+
+    display: flex;
+    flex-direction: column;
+}
+
+header,
+footer {
+    font-family: "cookiemonster";
+    text-align: center;
+}
+header {
+    font-size: 3rem;
+}
+
+#main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#board {
+    height: 500px;
+    width: 500px;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr;
+    gap: 1rem;
+}
+
+#board div {
+    background-color: var(--board-bg);
+    background-size: 100%;
+}
+/* #board div:nth-child(1) {
+    background-image: url(./images/cat.png);
+} */
+#board div img {
+    /* object-fit: cover; */
+    max-width: 100%;
+}
