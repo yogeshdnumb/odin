@@ -1,7 +1,8 @@
 // const board = document.querySelector("#board");
 
 const board = (() => {
-    currentPlayer = "x";
+    player = "x";
+    opponent = "o";
 
     boardDom = document.querySelectorAll("#board div");
     // function getCells() {
@@ -31,11 +32,11 @@ const board = (() => {
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
                 if (cells[i][j] === "x") {
-                    boardDom[boardIndex].textContent = "x";
+                    // boardDom[boardIndex].textContent = "x";
                     boardDom[boardIndex].style.backgroundImage =
                         "url('./images/cat.png')";
                 } else if (cells[i][j] !== null) {
-                    boardDom[boardIndex].textContent = "o";
+                    // boardDom[boardIndex].textContent = "o";
                     boardDom[boardIndex].style.backgroundImage =
                         "url('./images/dog.jpg')";
                 }
@@ -117,7 +118,8 @@ const board = (() => {
     // ];
 
     return {
-        currentPlayer,
+        player,
+        opponent,
         cells,
         drawBoard,
         consoleBoard,
@@ -131,28 +133,40 @@ const board = (() => {
 board.click();
 
 board.drawBoard();
-function ai() {
-    let bestMoves = [];
-    let bestScore = Infinity;
-    let bestMove;
-    for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 3; j++) {
-            if (board.cells[i][j] == null) {
-                board.cells[i][j] = "o";
-                score = minimax(true);
-                if (score < bestScore) {
-                    bestScore = score;
-                    bestMove = { i, j };
-                }
-                bestMoves.push({ i, j, score });
-                board.cells[i][j] = null;
-            }
-        }
+// function ai() {
+//     let bestMoves = [];
+//     let bestScore = Infinity;
+//     let bestMove;
+//     for (let i = 0; i < 3; i++) {
+//         for (let j = 0; j < 3; j++) {
+//             if (board.cells[i][j] == null) {
+//                 board.cells[i][j] = "o";
+//                 score = minimax(true);
+//                 if (score < bestScore) {
+//                     bestScore = score;
+//                     bestMove = { i, j };
+//                 }
+//                 bestMoves.push({ i, j, score });
+//                 board.cells[i][j] = null;
+//             }
+//         }
+//     }
+//     board.cells[bestMove.i][bestMove.j] = "o";
+//     board.drawBoard();
+//     console.log(bestMoves);
+//     return { bestMoves, bestMove };
+// }
+
+function ai(p) {
+    let move;
+    if (p == "x") {
+        move = minimax(true);
+    } else {
+        move = minimax(false);
     }
-    board.cells[bestMove.i][bestMove.j] = "o";
+    console.log(move);
+    board.cells[move.move.i][move.move.j] = "o";
     board.drawBoard();
-    console.log(bestMoves);
-    return { bestMoves, bestMove };
 }
 function minimax(isMaximizer) {
     if (
@@ -160,13 +174,13 @@ function minimax(isMaximizer) {
         board.checkRow() == "x" ||
         board.checkDiag() == "x"
     ) {
-        return 10;
+        return { score: 10 };
     } else if (
         board.checkCol() == "o" ||
         board.checkRow() == "o" ||
         board.checkDiag() == "o"
     ) {
-        return -10;
+        return { score: -10 };
     }
     let openSpots = 0;
     for (let i = 0; i < 3; i++) {
@@ -178,56 +192,68 @@ function minimax(isMaximizer) {
     }
     // console.log(opetenSpots);
     if (openSpots == 0) {
-        return 0;
+        return { score: 0 };
     }
 
     if (isMaximizer) {
-        let bestScore = -Infinity;
+        let best = { score: -Infinity, move: {} };
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
                 if (board.cells[i][j] === null) {
                     board.cells[i][j] = "x";
                     // board.drawBoard();
-                    let score = minimax(false);
+                    let score = minimax(false).score;
+                    // console.log("inside max", score);
                     // if (score > bestScore) {
                     //     // best.score = score;
                     //     // best.move = { i, j };
                     //     console.log({ i, j }, score);
                     // }
-                    bestScore = Math.max(bestScore, score);
+                    //
+                    if (score > best.score) {
+                        // console.log({ i, j }, best.score);
+                        best.move = { i, j };
+                        best.score = score;
+                        // console.log(best);
+                    }
+                    // bestScore = Math.max(bestScore, score);
                     // if (bestScore == 10) console.log(bestScore, { i, j });
                     board.cells[i][j] = null;
                 }
             }
         }
         // if (bestScore == 10) console.log(bestScore, bestMove);
-        return bestScore;
+        // move = bestMove;
+        return best;
     } else if (!isMaximizer) {
-        let bestScore = Infinity;
-        // let bestMove;
+        let best = { score: Infinity, move: {} };
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
                 if (board.cells[i][j] === null) {
                     board.cells[i][j] = "o";
                     // board.drawBoard();
-                    let score = minimax(true);
+                    let score = minimax(true).score;
+                    // console.log("insid mini", score);
+                    // console.log(score);
                     // console.log(score, bestScore);
-
-                    bestScore = Math.min(bestScore, score);
 
                     // if (score < best.score) {
                     //     console.log("updating", i, j);
                     //     best.score = score;
                     //     best.move = { i, j };
                     // }
-                    // if (score < bestScore) {
-                    //     console.log({ i, j });
-                    // }
+                    if (score < best.score) {
+                        // console.log({ i, j });
+                        best.move = { i, j };
+                        best.score = score;
+                    }
+                    // bestScore = Math.min(bestScore, score);
                     board.cells[i][j] = null;
                 }
             }
         }
         // console.log(best.move);
-        return bestScore;
+        // move = bestMove;
+        return best;
     }
 }
