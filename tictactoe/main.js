@@ -1,26 +1,37 @@
-// const board = document.querySelector("#board");
+const cat = document.querySelector(".players #cat");
+const dog = document.querySelector(".players #dog");
+const modal = document.querySelector("dialog");
+const play = document.querySelector("button");
+
+play.addEventListener("click", main);
+
+modal.showModal();
+
+players = document.querySelectorAll(".players>*");
+players.forEach((player) => {
+    player.addEventListener("click", (event) => {
+        event.target.classList.add("selected");
+        if (event.target.id == "cat") {
+            dog.classList.remove("selected");
+        } else {
+            cat.classList.remove("selected");
+        }
+    });
+});
 
 const board = (() => {
-    player = "x";
-    opponent = "o";
-
-    boardDom = document.querySelectorAll("#board div");
-    // function getCells() {
-    //     const cells = [];
-    //     console.log("updating");
-    //     const cellsDom = document.querySelectorAll("#board div");
-
-    //     cellsDom.forEach((cell) => {
-    //         cells.push(cell.getAttribute("data-value"));
-    //     });
-    //     return cells;
-    // }
-
+    let player = document.querySelector(".selected");
+    let opponent = document.querySelector(".players>*:not(.selected)");
+    let boardDom = document.querySelectorAll("#board div");
+    console.log(player, opponent);
     let cells = [
         [null, null, null],
         [null, null, null],
         [null, null, null],
     ];
+    function place(player, pos) {
+        cells[pos.i][pos.j] = player;
+    }
     function consoleBoard() {
         for (let i = 0; i < 3; i++) {
             console.log(cells[i][0], cells[i][1], cells[i][2]);
@@ -32,11 +43,9 @@ const board = (() => {
         for (let i = 0; i < 3; i++) {
             for (let j = 0; j < 3; j++) {
                 if (cells[i][j] === "x") {
-                    // boardDom[boardIndex].textContent = "x";
                     boardDom[boardIndex].style.backgroundImage =
                         "url('./images/cat.png')";
                 } else if (cells[i][j] !== null) {
-                    // boardDom[boardIndex].textContent = "o";
                     boardDom[boardIndex].style.backgroundImage =
                         "url('./images/dog.jpg')";
                 }
@@ -47,16 +56,17 @@ const board = (() => {
     function click() {
         boardDom.forEach((el) => {
             el.addEventListener("click", () => {
-                // console.log([...boardDom].indexOf(el));
-
-                // if (board.currentPlayer == "y") return;
-
                 let i = [Math.floor([...boardDom].indexOf(el) / 3)];
                 let j = [[...boardDom].indexOf(el) % 3];
-                if (board.cells[i][j] !== null) return;
-                board.cells[i][j] = "x";
-                // console.log(board.currentPlayer);
+                if (cells[i][j] !== null) return;
+                cells[i][j] = "x";
                 drawBoard();
+                if (board.checkWinner("o")) {
+                    drawBoard();
+                    setTimeout(() => alert("o won"), 0);
+                }
+                // console.log("time over");
+                if (board.checkTie()) setTimeout(() => alert("tie"), 0);
                 ai();
             });
         });
@@ -68,130 +78,83 @@ const board = (() => {
             } else return "o";
         }
     }
-    function checkRow() {
-        // console.log("row");
+    function checkRow(player) {
         for (let i = 0; i < 3; i++) {
-            if (isEqual(cells[i][0], cells[i][1], cells[i][2]) == "x")
-                return "x";
-            if (isEqual(cells[i][0], cells[i][1], cells[i][2]) == "o")
-                return "o";
+            if (isEqual(cells[i][0], cells[i][1], cells[i][2]) == player)
+                return player;
         }
     }
-    function checkCol() {
-        // console.log("col");
+    function checkCol(player) {
         for (let i = 0; i < 3; i++) {
-            if (isEqual(cells[0][i], cells[1][i], cells[2][i]) == "x")
-                return "x";
-            else if (isEqual(cells[0][i], cells[1][i], cells[2][i]) == "o")
-                return "o";
+            if (isEqual(cells[0][i], cells[1][i], cells[2][i]) == player)
+                return player;
         }
     }
 
-    function checkDiag() {
-        // console.log("diag");
-        if (isEqual(cells[0][0], cells[1][1], cells[2][2]) == "x") return "x";
-        if (isEqual(cells[0][0], cells[1][1], cells[2][2]) == "o") return "o";
-        if (isEqual(cells[0][2], cells[1][1], cells[2][0]) == "x") return "x";
-        if (isEqual(cells[0][2], cells[1][1], cells[2][0]) == "o") return "o";
-        // return isEqual(cells[0][2], cells[1][1], cells[2][0]);
+    function checkDiag(player) {
+        if (isEqual(cells[0][0], cells[1][1], cells[2][2]) == player)
+            return player;
+        if (isEqual(cells[0][2], cells[1][1], cells[2][0]) == player)
+            return player;
     }
-    // cells = [
-    //     [null, "o", null],
-    //     [null, null, null],
-    //     [null, "o", "x"],
-    // ];
-    // cells = [
-    //     ["o", "x", "x"],
-    //     [null, "o", "x"],
-    //     [null, null, null],
-    // ];
-
-    // cells = [
-    //     ["o", "x", "o"],
-    //     ["x", "x", "o"],
-    //     [null, null, null],
-    // ];
-    // cells = [
-    //     ["x", "x", "o"],
-    //     [null, "o", null],
-    //     [null, null, null],
-    // ];
-
+    function checkWinner(player) {
+        if (checkCol(player) || checkRow(player) || checkDiag(player)) {
+            return player;
+        }
+    }
+    function checkTie() {
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                if (cells[i][j] == null) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    function dis() {
+        console.log(board.cells);
+    }
     return {
+        dis,
         player,
         opponent,
         cells,
+        place,
         drawBoard,
         consoleBoard,
         click,
-        checkRow,
-        checkCol,
-        checkDiag,
+        checkWinner,
+        checkTie,
     };
 })();
 
 board.click();
 
 board.drawBoard();
-// function ai() {
-//     let bestMoves = [];
-//     let bestScore = Infinity;
-//     let bestMove;
-//     for (let i = 0; i < 3; i++) {
-//         for (let j = 0; j < 3; j++) {
-//             if (board.cells[i][j] == null) {
-//                 board.cells[i][j] = "o";
-//                 score = minimax(true);
-//                 if (score < bestScore) {
-//                     bestScore = score;
-//                     bestMove = { i, j };
-//                 }
-//                 bestMoves.push({ i, j, score });
-//                 board.cells[i][j] = null;
-//             }
-//         }
-//     }
-//     board.cells[bestMove.i][bestMove.j] = "o";
-//     board.drawBoard();
-//     console.log(bestMoves);
-//     return { bestMoves, bestMove };
-// }
 
-function ai(p) {
-    let move;
-    if (p == "x") {
-        move = minimax(true);
+function ai() {
+    let best;
+    if (board.opponent == "x") {
+        best = minimax(true);
     } else {
-        move = minimax(false);
+        best = minimax(false);
     }
-    console.log(move);
-    board.cells[move.move.i][move.move.j] = "o";
+    board.cells[best.move.i][best.move.j] = board.opponent;
     board.drawBoard();
+    if (board.checkWinner("x") || board.checkTie()) alert("X won");
+    if (board.checkWinner("o") || board.checkTie()) {
+        board.drawBoard();
+        setTimeout(() => alert("o won"), 0);
+    }
+    if (board.checkTie()) setTimeout(() => alert("tie"), 0);
 }
 function minimax(isMaximizer) {
-    if (
-        board.checkCol() == "x" ||
-        board.checkRow() == "x" ||
-        board.checkDiag() == "x"
-    ) {
+    if (board.checkWinner("x")) {
         return { score: 10 };
-    } else if (
-        board.checkCol() == "o" ||
-        board.checkRow() == "o" ||
-        board.checkDiag() == "o"
-    ) {
+    } else if (board.checkWinner("o")) {
         return { score: -10 };
-    }
-    let openSpots = 0;
-    for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 3; j++) {
-            if (board.cells[i][j] === null) {
-                openSpots++;
-            }
-        }
-    }
-    // console.log(opetenSpots);
-    if (openSpots == 0) {
+    } else if (board.checkTie()) {
         return { score: 0 };
     }
 
@@ -201,29 +164,19 @@ function minimax(isMaximizer) {
             for (let j = 0; j < 3; j++) {
                 if (board.cells[i][j] === null) {
                     board.cells[i][j] = "x";
-                    // board.drawBoard();
+
                     let score = minimax(false).score;
-                    // console.log("inside max", score);
-                    // if (score > bestScore) {
-                    //     // best.score = score;
-                    //     // best.move = { i, j };
-                    //     console.log({ i, j }, score);
-                    // }
-                    //
+
                     if (score > best.score) {
-                        // console.log({ i, j }, best.score);
                         best.move = { i, j };
                         best.score = score;
-                        // console.log(best);
                     }
-                    // bestScore = Math.max(bestScore, score);
-                    // if (bestScore == 10) console.log(bestScore, { i, j });
+
                     board.cells[i][j] = null;
                 }
             }
         }
-        // if (bestScore == 10) console.log(bestScore, bestMove);
-        // move = bestMove;
+
         return best;
     } else if (!isMaximizer) {
         let best = { score: Infinity, move: {} };
@@ -231,29 +184,19 @@ function minimax(isMaximizer) {
             for (let j = 0; j < 3; j++) {
                 if (board.cells[i][j] === null) {
                     board.cells[i][j] = "o";
-                    // board.drawBoard();
-                    let score = minimax(true).score;
-                    // console.log("insid mini", score);
-                    // console.log(score);
-                    // console.log(score, bestScore);
 
-                    // if (score < best.score) {
-                    //     console.log("updating", i, j);
-                    //     best.score = score;
-                    //     best.move = { i, j };
-                    // }
+                    let score = minimax(true).score;
+
                     if (score < best.score) {
-                        // console.log({ i, j });
                         best.move = { i, j };
                         best.score = score;
                     }
-                    // bestScore = Math.min(bestScore, score);
+
                     board.cells[i][j] = null;
                 }
             }
         }
-        // console.log(best.move);
-        // move = bestMove;
+
         return best;
     }
 }

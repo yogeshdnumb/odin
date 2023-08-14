@@ -3,6 +3,10 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/modern-normalize/2.0.0/modern-normalize.min.css"
+        />
         <link rel="stylesheet" href="./style.css" />
         <script src="./main.js" defer></script>
         <title>Cats vs Dogs</title>
@@ -22,6 +26,26 @@
                 <div></div>
             </div>
         </div>
+        <dialog>
+            <div class="main">
+                <h1>Choose you pet</h1>
+                <div class="players">
+                    <img
+                        class="selected"
+                        id="cat"
+                        src="./images/cat.png"
+                        alt="cat"
+                    /><img id="dog" src="./images/dog.jpg" alt="dog" />
+                </div>
+                <div class="play">
+                    <button>Play</button>
+                    <select name="turn" id="turn">
+                        <option value="first">First</option>
+                        <option value="second">Second</option>
+                    </select>
+                </div>
+            </div>
+        </dialog>
         <footer>Made with &#35; by <a href="">yogeshdcool</a></footer>
     </body>
 </html>
