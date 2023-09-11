@@ -49,20 +49,60 @@ header #tabs {
 }
 
 #tabs a {
+    text-decoration: none;
     color: #472d23;
 }
 #tabs a:hover {
+    text-decoration: underline;
+    text-decoration-color: #474747;
+    text-decoration-thickness: 5px;
+}
+#tabs a.selected {
+    text-decoration: underline;
     text-decoration-color: #474747;
     text-decoration-thickness: 5px;
 }
 
-#main {
+#main.shown,
+#menu.shown,
+#booking.shown {
+    /* visibility: visible; */
     display: flex;
+}
+#main {
+    /* visibility: hidden; */
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     flex: 1;
     padding-top: 64px;
+}
+#main,
+#menu,
+#booking {
+    /* visibility: hidden; */
+    display: none;
+}
+#booking {
+    font-family: "Bungee";
+    color: #e7bc84;
+    font-size: 3rem;
+    margin: auto;
+}
+#menu table {
+    font-family: Bungee;
+    color: #e7bc84;
+    /* display: flex; */
+    margin: auto;
+    padding-top: 64px;
+    justify-content: center;
+    align-items: center;
+}
+th {
+    font-family: "Caramel";
+    font-weight: 800;
+    font-size: 2rem;
+    font-style: italic;
 }
 
 #dish-of-day {
@@ -204,6 +244,7 @@ header #tabs {
     border-radius: 10px;
 }
 footer {
+    margin-top: auto;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -211,8 +252,7 @@ footer {
     color: #e7bc84;
 }
 
-.box {
-    --mask: radial-gradient(34.99px at 48px 50%, #000 99%, #0000 101%) 0;
-
-    mask: var(--mask);
+footer a {
+    /* text-decoration: none; */
+    color: #e7bc84;
 }
