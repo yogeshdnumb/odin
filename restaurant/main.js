@@ -24,7 +24,6 @@ links.forEach((link) => {
     link.addEventListener("click", (e) => {
         rm_underline();
         e.currentTarget.classList.add("selected");
-        console.log(e.currentTarget.id);
         clear_page();
         switch (e.currentTarget.id) {
             case "home-link":
