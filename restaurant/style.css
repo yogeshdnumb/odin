@@ -17,6 +17,7 @@ header {
     justify-content: space-between;
     width: 100%;
     height: 128px;
+    flex-shrink: 0;
     background-color: #e7bc84;
     color: #472d23;
     --mask: radial-gradient(
