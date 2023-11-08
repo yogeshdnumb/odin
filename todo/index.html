@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&display=swap" rel="stylesheet" />
+    <!-- <script src="https://kit.fontawesome.com/18928e2539.js" crossorigin="anonymous"></script> -->
+    <link rel="icon" href="https://fav.farm/🔥" />
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <!-- <script type="module" src="./todo.js"></script> -->
+    <script type="module" src="./dom.js"></script>
+    <title>ToDo</title>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="./img/checklist_rtl_FILL0_wght400_GRAD0_opsz24.svg" alt="" />
+            <span id="title">ToDos!</span>
+        </div>
+        <div class="create">
+            <!-- <img src="./public/img/plus.png" alt="" /><span>Create</span> -->
+            <img src="./img/add_circle_FILL0_wght400_GRAD0_opsz24.svg" alt="" />
+            <span>CREATE</span>
+        </div>
+    </header>
+    <div class="sidebar-main">
+
+        <ul id="project-list">
+            <li>Test</li>
+        </ul>
+        <div class="crt-pro"><input id="crt-pro" type="text">
+            <div><button id="ok-btn">Add project</button></div>
+        </div>
+    </div>
+    <div class="main">
+
+    </div>
+    <template>
+        <div class="todo">
+            <input type="checkbox" name="" id="" /><span class="title"></span><span class="due"></span><button
+                class="expand">
+                <img src="./img/edit_note_FILL0_wght400_GRAD0_opsz24.svg" alt="" />
+            </button>
+            <button class="delete">
+                <img src="./img/delete_FILL0_wght400_GRAD0_opsz24.svg" alt="" />
+            </button>
+            <button class="more">
+                <img src="./img/more_vert_FILL0_wght400_GRAD0_opsz24.svg" alt="" />
+            </button>
+            <span class="priority"></span>
+        </div>
+    </template>
+    <dialog><input type="text" placeholder="Title"><input type="date" name="" id=""><select name="" id="">
+            <option value="high">high</option>
+            <option value="medium">medium</option>
+            <option value="low">low</option>
+        </select>
+        <button>Add to do</button>
+    </dialog>
+    <footer></footer>
+
+</body>
+
+</html>

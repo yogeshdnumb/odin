@@ -1,0 +1,232 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+:root {
+    --text: hsl(0, 0%, 2%);
+    --background: hsl(300, 5%, 96%);
+    --primary: hsl(170, 3%, 60%);
+    --secondary: hsl(180, 2%, 90%);
+    --accent: hsl(137, 3%, 50%);
+}
+
+@font-face {
+    src: url("./fonts/Ando-Bold.woff2") format(truetype);
+    font-family: "ando";
+    font-style: normal;
+    font-weight: 700;
+}
+
+@font-face {
+    src: url("./Demo_Fonts/Fontspring-DEMO-proximanova-regular.otf");
+    font-family: "proxima";
+}
+
+body {
+    display: grid;
+    grid-template-rows: 86px 1fr 86px;
+    grid-template-columns: min-content 1fr;
+    position: relative;
+    height: 100vh;
+}
+
+.main {
+    background-color: var(--background);
+}
+
+footer {
+    grid-column: 1/-1;
+    height: 86px;
+    background-color: var(--secondary);
+}
+
+header {
+    position: relative;
+    padding-inline: 1rem;
+    display: flex;
+    justify-content: space-between;
+    grid-area: 1 / 1 / 2 / -1;
+    height: 86px;
+    background-color: var(--secondary);
+    font-size: 3rem;
+    font-family: "ando", cursive;
+}
+.create {
+    cursor: pointer;
+}
+.logo,
+.create {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    width: min-content;
+    height: 100%;
+    font-family: "ando";
+    color: brown;
+}
+.create span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.logo img {
+    fill: green;
+}
+.create img,
+.logo img {
+    width: 92px;
+    max-height: 90%;
+}
+.sidebar-main {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    width: 200px;
+    font-family: ando;
+    font-size: 1.7rem;
+
+    /* font-weight: 800; */
+    /* font-family: proxima; */
+}
+.sidebar-main #project-adder {
+    /* display: flex; */
+    justify-content: center;
+}
+.sidebar-main input {
+    width: calc(100% - 16px);
+}
+.sidebar-main > ul {
+    margin-top: 1rem;
+    opacity: 0.7;
+}
+
+.main {
+    display: grid;
+    justify-content: center;
+    gap: 1.3rem;
+    grid-template-rows: repeat(auto-fill, 100px);
+    overflow-y: auto;
+    padding-top: 1rem;
+}
+
+.main .todo {
+    /* border-radius: 5px; */
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: 750px;
+    padding: 1rem;
+    border: solid black 1px;
+    font-size: 1.8rem;
+    font-family: ando;
+}
+
+.todo button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 35px;
+    cursor: pointer;
+}
+
+.expand,
+.more,
+.delete {
+    /* background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover; */
+    background-color: inherit;
+}
+
+/* .expand {
+}
+
+.more {
+}
+
+.delete {
+} */
+
+.todo img {
+    height: 30px;
+}
+
+.todo input[type="checkbox"] {
+    width: 30px;
+    height: 30px;
+}
+
+.todo .title {
+    width: 250px;
+    text-align: center;
+}
+
+.todo .due {
+    width: 100px;
+    text-align: center;
+}
+
+.todo .priority {
+    width: 100px;
+    text-align: center;
+}
+input[type="checkbox"]:checked + .title {
+    text-decoration: line-through;
+}
+
+input[type="checkbox"]:checked ~ * {
+    opacity: 0.3;
+}
+
+input[type="checkbox"]:checked {
+    opacity: 0.3;
+}
+.todo-dialog.invisible {
+    display: none;
+}
+dialog[open] {
+    width: 300px;
+    height: 200px;
+    margin: auto;
+    inset: 0;
+    display: grid;
+    grid-template-areas:
+        "text text"
+        "date priority"
+        "done done";
+}
+
+dialog input[type="text"] {
+    grid-area: text;
+}
+dialog input[type="date"] {
+    grid-area: date;
+}
+dialog select {
+    grid-area: priority;
+}
+dialog button {
+    grid-area: done;
+}
+.crt-pro > input {
+    border: solid 1px red;
+}
+#project-list li {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+#project-list > li > button {
+    background-color: white;
+}
+.del {
+    visibility: hidden;
+}
+#project-list > *:hover .del {
+    visibility: visible;
+}

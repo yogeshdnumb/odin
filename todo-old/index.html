@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Bungee&display=swap"
+            rel="stylesheet"
+        />
+        <script
+            src="https://kit.fontawesome.com/18928e2539.js"
+            crossorigin="anonymous"
+        ></script>
+        <link rel="stylesheet" href="normalize.css" />
+        <link rel="stylesheet" href="./style.css" />
+        <script type="module" src="./todoUtils.js"></script>
+        <script type="module" src="./main.js"></script>
+        <title>ToDo</title>
+        <!-- <script defer src="./test.js"></script> -->
+        <!-- <script type="module" src="./test1.js"></script> -->
+    </head>
+
+    <body>
+        <header>
+            <div class="logo">
+                <img src="./img/check-list.png" alt="" />
+                <span id="title">ToDo</span>
+            </div>
+            <div class="create">
+                <img src="./img/plus.png" alt="" /><span>Create</span>
+            </div>
+        </header>
+        <div class="sidebar-main"></div>
+        <div class="main">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <footer></footer>
+
+        <dialog>
+            <header>Create a new...</header>
+            <ul class="sidebar">
+                <li>All</li>
+                <li>Note</li>
+                <li>Projects</li>
+            </ul>
+            <div class="editor">
+                <textarea class="title" placeholder="Title"></textarea>
+                <textarea class="content" placeholder="ToDo"></textarea>
+            </div>
+            <footer>
+                <input type="date" />
+                <button>Done</button>
+            </footer>
+        </dialog>
+    </body>
+</html>

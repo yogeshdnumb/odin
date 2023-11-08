@@ -1,0 +1,30 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.parent {
+    display: grid;
+    width: 500px;
+    height: 500px;
+    background-color: burlywood;
+    gap: 10px;
+
+    grid-template-rows: 100px 100px;
+    grid-template-columns: 100px 100px;
+
+    grid-auto-rows: 200px;
+
+    align-items: center;
+}
+
+.parent > * {
+    border: solid red 1px;
+}
+
+.parent > div:nth-child(1) {
+    background-color: red;
+    align-self: center;
+}

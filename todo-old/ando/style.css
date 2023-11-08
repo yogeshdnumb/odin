@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Ando';
+    src: local('Ando Bold'), local('Ando-Bold'),
+        url('Ando-Bold.woff2') format('woff2'),
+        url('Ando-Bold.woff') format('woff'),
+        url('Ando-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }

@@ -12,19 +12,16 @@ const pages_completed = form.querySelector("#completed-pages");
 const status = form.querySelector("#status");
 const cover = form.querySelector("#cover");
 
-function Book(title, author, pages, status, cover) {
-    Book.prototype.count++;
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-    this.id = Book.prototype.count;
-    this.cover = cover;
+class Book {
+    constructor(title, author, pages, status, cover) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+        this.id = Book.prototype.count;
+        this.cover = cover;
+    }
 }
-Book.prototype.count = 0;
-
-// inp = prompt("Enter Book details");
-
 function make_book(book) {
     const book_container = document.createElement("div");
     const id = document.createElement("span");
@@ -87,6 +84,7 @@ function make_book(book) {
     //     element.setAttribute("contenteditable", "");
     // });
 }
+
 submit.addEventListener("click", () => {
     if (form.querySelector("input#title").value != "") {
         make_book(
